@@ -1,0 +1,20 @@
+﻿body {
+}
+
+.logo {
+
+}
+
+input[type=button] {
+    width: 200px;
+}
+
+input[type=submit] {
+    width: 200px;
+    align-self: 
+}
+
+#CharitySlogan {
+    text-align: left;
+    font-size:71px;
+}
