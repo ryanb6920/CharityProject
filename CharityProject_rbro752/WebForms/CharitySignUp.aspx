@@ -30,15 +30,22 @@
                     <h2>Sign Up - Donor</h2>
                     <!-- Full Name Input -->
                     <div class="form-group">
-                        <label for="fullName">Charity Name:</label>
+                        <label for="charityNameTxt">Charity Name:</label>
                         <input type="text" id="charityNameTxt" placeholder="Charity Name" class="form-control" required="required" />
                     </div>
+
                     <!-- Email Input -->
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="emailSignIn" placeholder="Enter Charity Email" class="form-control" required="required" />                   
                     </div>
 
+                    <!-- Website URL Input-->
+                    <div class="form-group">
+                        <label for="websiteURL">Website URL (Optional):</label>
+                        <input type="text" id="websiteURL" placeholder="Enter Website URL" class="form-control"/>                   
+                    </div>
+                   
                     <!-- Contact Number Input -->
                     <div class="form-group">
                         <label for="contact">Contact Number:</label>
