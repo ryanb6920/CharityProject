@@ -28,7 +28,7 @@
             <div class="col-sm-5">
                 <form id="SignIn" runat="server">
                     <h2>Sign Up - Donor</h2>
-                    <!-- Full Name Input -->
+                    <!-- Charity Name Input -->
                     <div class="form-group">
                         <label for="charityNameTxt">Charity Name:</label>
                         <input type="text" id="charityNameTxt" placeholder="Charity Name" class="form-control" required="required" />
