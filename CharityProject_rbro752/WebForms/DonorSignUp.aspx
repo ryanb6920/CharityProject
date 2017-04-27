@@ -28,10 +28,15 @@
             <div class="col-sm-5">
                 <form id="SignIn" runat="server">
                     <h2>Sign Up - Donor</h2>
-                    <!-- Full Name Input -->
+                    <!-- First Name Input -->
                     <div class="form-group">
-                        <label for="fullName">Full Name:</label>
-                        <input type="text" id="fullNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
+                        <label for="fullName">First Name:</label>
+                        <input type="text" id="firstNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
+                    </div>
+                    <!-- Last Name Input -->
+                    <div class="form-group">
+                        <label for="fullName">Last Name:</label>
+                        <input type="text" id="lastNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
                     </div>
                     <!-- Email Input -->
                     <div class="form-group">

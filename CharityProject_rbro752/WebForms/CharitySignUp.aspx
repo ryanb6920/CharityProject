@@ -73,9 +73,9 @@
                         <label for="password">Confirm Password:</label>
                         <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
                     </div>
-                    <div class="form-group">
-                        <asp:Button ID="btnSignUp" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSignUp_Click">
-                    </div>
+                    
+                    <asp:Button ID="btnSignUp" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSignUp_Click" />
+                    
                 </form>
             </div>
 

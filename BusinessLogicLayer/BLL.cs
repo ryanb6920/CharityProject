@@ -10,5 +10,18 @@ namespace BusinessLogicLayer
 {
     public class BLL
     {
+        public BLL()
+        {
+
+        }
+
+        public int DonorSignUpBLL(Donors objDonor)
+        {
+            int output;
+            DAL objDAL = new DAL();
+            output = objDAL.DonorSignUpDAL(objDonor);
+            return output;
+        }
+
     }
 }

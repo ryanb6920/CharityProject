@@ -22,13 +22,22 @@ namespace CharityProject_rbro752.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlForm SignIn;
         
         /// <summary>
-        /// fullNameTxt control.
+        /// firstNameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText fullNameTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText firstNameTxt;
+        
+        /// <summary>
+        /// lastNameTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lastNameTxt;
         
         /// <summary>
         /// emailSignIn control.

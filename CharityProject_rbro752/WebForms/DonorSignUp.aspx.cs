@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessLogicLayer;
+using BusinessObjects;
 
 namespace CharityProject_rbro752.WebForms
 {
@@ -16,7 +18,9 @@ namespace CharityProject_rbro752.WebForms
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
+            BLL objBLL = new BLL();
 
+            Donors objDonor = new Donors();
         }
     }
 }
