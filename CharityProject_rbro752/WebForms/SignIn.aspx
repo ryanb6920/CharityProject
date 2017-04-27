@@ -32,15 +32,15 @@
                     <!-- Email Input -->
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="emailSignIn" placeholder="Enter Email" class="form-control" required="required" />
+                        <input type="email" id="emailSignIn" placeholder="Enter Email" class="form-control" required="required" runat="server"/>
                     </div>
                     <!-- Password Input -->
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="passwordSignIn" placeholder="Enter Password" class="form-control" required="required" />
+                        <input type="password" id="passwordSignIn" placeholder="Enter Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="login" value="Login" class="btn btn-success" style="float: right;" />
+                        <asp:Button ID="btnSignIn" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSignIn_Click"/>
                     </div>
                 </form>
             </div>

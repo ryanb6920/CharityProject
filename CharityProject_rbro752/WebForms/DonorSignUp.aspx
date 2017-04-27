@@ -31,24 +31,24 @@
                     <!-- Full Name Input -->
                     <div class="form-group">
                         <label for="fullName">Full Name:</label>
-                        <input type="text" id="fullNameTxt" placeholder="Full Name" class="form-control" required="required" />
+                        <input type="text" id="fullNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
                     </div>
                     <!-- Email Input -->
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="emailSignIn" placeholder="Enter Email" class="form-control" required="required" />                   
+                        <input type="email" id="emailSignIn" placeholder="Enter Email" class="form-control" required="required" runat="server"/>                   
                     </div>
                     <!-- Password Input -->
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="passwordSignUp" placeholder="Enter Password" class="form-control" required="required" />
+                        <input type="password" id="passwordSignUp" placeholder="Enter Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" />
+                        <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="login" value="Submit" class="btn btn-success" style="float: right;" />
+                        <asp:Button ID="btnSignUp" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSignUp_Click"/>
                     </div>
                 </form>
             </div>

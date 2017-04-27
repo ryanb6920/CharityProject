@@ -11,5 +11,32 @@ namespace CharityProject_rbro752.WebForms {
     
     
     public partial class SignIn {
+        
+        /// <summary>
+        /// emailSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl emailSignIn;
+        
+        /// <summary>
+        /// passwordSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordSignIn;
+        
+        /// <summary>
+        /// btnSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSignIn;
     }
 }

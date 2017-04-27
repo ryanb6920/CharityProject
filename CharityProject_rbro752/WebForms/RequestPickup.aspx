@@ -24,12 +24,12 @@
 
                 <div class="form-group">
                     <label for="inputPickupDate">Pickup Date</label>
-                    <input type="date" id="inputPickupDate" class="form-control" />
+                    <input type="date" id="inputPickupDate" class="form-control" runat="server"/>
                 </div>
 
                 <div class="form-group">
                     <label for="inputPickupTime">Pickup Time</label>
-                    <input type="text" id="inputPickupTime" class="form-control" />
+                    <input type="text" id="inputPickupTime" class="form-control" runat="server"/>
                 </div>
 
             </div>
@@ -37,7 +37,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="donationType">Donation Category</label>
-                    <select class="form-control" id="donationType">
+                    <select class="form-control" id="donationType" runat="server">
                         <option>Clothes</option>
                         <option>Food</option>
                         <option>Toys</option>
@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                     <label for="selectCharity">Select Charity</label>
-                    <select class="form-control" id="selectCharity">
+                    <select class="form-control" id="selectCharity" runat="server">
                         <option>Charity 1</option>
                         <option>Charity 2</option>
                         <option>Charity 3</option>
@@ -59,6 +59,8 @@
                     </select>
                 </div>
                             
+                <asp:Button ID="btnSubmitPickupRequest" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSubmitPickupRequest_Click" />
+                
                 <h4>Want to find out more about our charities?</h4>
                 <a href="ListCharities.aspx" class="btn btn-default" target="_blank">Click Here!</a>
                 
