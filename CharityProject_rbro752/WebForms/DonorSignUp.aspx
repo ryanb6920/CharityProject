@@ -30,26 +30,26 @@
                     <h2>Sign Up - Donor</h2>
                     <!-- First Name Input -->
                     <div class="form-group">
-                        <label for="fullName">First Name:</label>
-                        <input type="text" id="firstNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
+                        <label for="firstNameTxt">First Name:</label>
+                        <input type="text" id="firstNameTxt" placeholder="First Name" class="form-control" required="required" runat="server"/>
                     </div>
                     <!-- Last Name Input -->
                     <div class="form-group">
-                        <label for="fullName">Last Name:</label>
-                        <input type="text" id="lastNameTxt" placeholder="Full Name" class="form-control" required="required" runat="server"/>
+                        <label for="lastNameTxt">Last Name:</label>
+                        <input type="text" id="lastNameTxt" placeholder="Last Name" class="form-control" required="required" runat="server"/>
                     </div>
                     <!-- Email Input -->
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="emailSignIn" placeholder="Enter Email" class="form-control" required="required" runat="server"/>                   
+                        <label for="emailSignUp">Email:</label>
+                        <input type="email" id="emailSignUp" placeholder="Enter Email" class="form-control" required="required" runat="server"/>                   
                     </div>
                     <!-- Password Input -->
                     <div class="form-group">
-                        <label for="password">Password:</label>
+                        <label for="passwordSignUp">Password:</label>
                         <input type="password" id="passwordSignUp" placeholder="Enter Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password:</label>
+                        <label for="passwordConfirmSignUp">Password:</label>
                         <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">

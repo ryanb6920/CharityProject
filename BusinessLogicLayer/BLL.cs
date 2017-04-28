@@ -23,5 +23,13 @@ namespace BusinessLogicLayer
             return output;
         }
 
+        public int CharitySignUpBLL(Charities objCharity)
+        {
+            int output;
+            DAL objDal = new DAL();
+            output = objDal.CharitySignUpDAL(objCharity);
+            return output;
+        }
+
     }
 }

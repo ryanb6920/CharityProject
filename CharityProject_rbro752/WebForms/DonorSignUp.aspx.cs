@@ -18,9 +18,33 @@ namespace CharityProject_rbro752.WebForms
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            BLL objBLL = new BLL();
+            if(passwordSignUp.Value == passwordConfirmSignUp.Value)
+            {
+                int output;
 
-            Donors objDonor = new Donors();
+                BLL objBLL = new BLL();
+                Donors objDonor = new Donors();
+                objDonor.FirstName = firstNameTxt.Value;
+                objDonor.LastName = lastNameTxt.Value;
+                objDonor.Email = emailSignUp.Value;
+                objDonor.Password = passwordSignUp.Value;
+
+                output = objBLL.DonorSignUpBLL(objDonor);
+
+                if(output > 0)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Succesfully Registered as Donor'); window.location.href = 'DonorSignUp.aspx';", true);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Registration Failed'); window.location.href = 'DonorSignUp.aspx';", true);
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Passwords must match!'); window.location.href = 'DonorSignUp.aspx';", true);
+            }
+            
         }
     }
 }

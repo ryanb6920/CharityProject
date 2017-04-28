@@ -36,8 +36,8 @@
 
                     <!-- Email Input -->
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="emailSignIn" placeholder="Enter Charity Email" class="form-control" required="required" runat="server"/>                   
+                        <label for="emailSignUp">Email:</label>
+                        <input type="email" id="emailSignUp" placeholder="Enter Charity Email" class="form-control" required="required" runat="server"/>                   
                     </div>
 
                     <!-- Website URL Input-->
@@ -48,7 +48,7 @@
                    
                     <!-- Contact Number Input -->
                     <div class="form-group">
-                        <label for="contact">Contact Number:</label>
+                        <label for="charityContactNumber">Contact Number:</label>
                         <input type="text" id="charityContactNumber" placeholder="Contact Number" class="form-control" required="required" runat="server"/>
                     </div>
 
@@ -66,11 +66,11 @@
 
                     <!-- Password Input -->
                     <div class="form-group">
-                        <label for="password">Password:</label>
+                        <label for="passwordSignUp">Password:</label>
                         <input type="password" id="passwordSignUp" placeholder="Enter Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
-                        <label for="password">Confirm Password:</label>
+                        <label for="passwordConfirmSignUp">Confirm Password:</label>
                         <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
                     </div>
                     

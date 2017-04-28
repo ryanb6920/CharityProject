@@ -23,26 +23,47 @@ namespace DataAccessLayer
         {
             int output = 0;
             SqlConnection connection = new SqlConnection(ConnectionString);
-            string sql = string.Format(@"INSERT INTO [Donors] (FirstName, LastName, Email, Password, CreatedDate)
-                                        VALUES ('{0}','{1}','{2}','{3}', '{4}'",
+            string sql = string.Format(@"INSERT INTO [Donors] (FirstName, LastName, Email, Password)
+                                        VALUES ('{0}','{1}','{2}','{3}')",
                                         objDonor.FirstName, objDonor.LastName, objDonor.Email, objDonor.Password, objDonor.CreatedDate);
             SqlCommand command = new SqlCommand(sql, connection);
-
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+                output = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
                 throw ex;
             }
             finally
             {
                 connection.Close();
             }
+            return output;
+        }
 
+        public int CharitySignUpDAL(Charities objCharity)
+        {
+            int output = 0;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"INSERT INTO [Charities] (CharityName, Email, URL, PhoneNo, OpenHours, Address, Password)
+                                        VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
+                objCharity.CharityName,objCharity.Email,objCharity.URL,objCharity.PhoneNo,objCharity.OpenHours,objCharity.Address,objCharity.Password);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                output = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
             return output;
         }
 
