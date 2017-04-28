@@ -45,7 +45,7 @@ namespace CharityProject_rbro752.WebForms
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Registration Failed'); window.location.href = 'CharitySignUp.aspx';", true);
                 }
-               
+
             }
             else
             {

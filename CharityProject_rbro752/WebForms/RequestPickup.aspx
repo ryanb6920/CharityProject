@@ -50,12 +50,7 @@
                 <div class="form-group">
                     <label for="selectCharity">Select Charity</label>
                     <select class="form-control" id="selectCharity" runat="server">
-                        <option>Charity 1</option>
-                        <option>Charity 2</option>
-                        <option>Charity 3</option>
-                        <option>Charity 4</option>
-                        <option>Charity 5</option>
-                        <option>Charity 6</option>
+                        
                     </select>
                 </div>
                             

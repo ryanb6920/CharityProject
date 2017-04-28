@@ -67,5 +67,15 @@ namespace DataAccessLayer
             return output;
         }
 
+        public DataSet GetCharities()
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = "select * from Charities";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, connection);
+            DataSet ds = new DataSet();
+            dataAdapter.Fill(ds, "Charities");
+            return ds;
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BusinessObjects;
 using DataAccessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -30,6 +31,13 @@ namespace BusinessLogicLayer
             output = objDal.CharitySignUpDAL(objCharity);
             return output;
         }
+
+        public DataSet GetCharities()
+        {
+            DAL objDal = new DAL();
+            return objDal.GetCharities();
+        }
+
 
     }
 }
