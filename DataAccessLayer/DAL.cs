@@ -67,6 +67,14 @@ namespace DataAccessLayer
             return output;
         }
 
+        public int RequestPickupDAL(Donation objDonation)
+        {
+            int output = 0;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, DropOffDate, NoItems, NoRecycledItems")
+            return output;
+        }
+
         public DataSet GetCharities()
         {
             SqlConnection connection = new SqlConnection(ConnectionString);

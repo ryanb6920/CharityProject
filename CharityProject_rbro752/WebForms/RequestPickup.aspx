@@ -8,7 +8,7 @@
                 <img src="../images/logo.jpg" width="150" />
             </div>
             <div class="col-sm-10">
-                <h1 id="CharitySlogan">Useless is Useful - Donate Now!</h1>
+                <h1>Request Pickup</h1>
             </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     <label for="textArea">Pickup Address</label>
-                    <textarea class="form-control" rows="4" id="pickupAddress"></textarea>
+                    <textarea class="form-control" rows="4" id="pickupAddress" runat="server"></textarea>
 
                 </div>
 
@@ -49,8 +49,7 @@
 
                 <div class="form-group">
                     <label for="selectCharity">Select Charity</label>
-                    <select class="form-control" id="selectCharity" runat="server">
-                        
+                    <select class="form-control" id="selectCharity" runat="server">                      
                     </select>
                 </div>
                             

@@ -13,6 +13,15 @@ namespace CharityProject_rbro752.WebForms {
     public partial class RequestPickup {
         
         /// <summary>
+        /// pickupAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea pickupAddress;
+        
+        /// <summary>
         /// inputPickupDate control.
         /// </summary>
         /// <remarks>
