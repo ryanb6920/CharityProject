@@ -193,6 +193,46 @@ namespace DataAccessLayer
 
             return objDonors;
         }
+
+        public Charities FindCharity(string email, string password)
+        {
+            Charities objCharity = null;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"SELECT TOP 1 * FROM [Charities]
+                                            WHERE Email = '{0}' AND Password = '{1}'",
+                                            email, password);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    objCharity = new Charities();
+                    if (dr.Read())
+                    {
+                        objCharity.Id = Convert.ToInt32(GetColumnValue(dr, "Id"));
+                        objCharity.CharityName = GetColumnValue(dr, "CharityName");
+                        objCharity.Email = GetColumnValue(dr, "Email");
+                        objCharity.URL = GetColumnValue(dr, "URL");
+                        objCharity.PhoneNo = GetColumnValue(dr, "PhoneNo");
+                        objCharity.OpenHours = GetColumnValue(dr, "OpenHours");
+                        objCharity.Address = GetColumnValue(dr, "Address");
+                        objCharity.Password = GetColumnValue(dr, "Password");
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return objCharity;
+        }
         
 
     }

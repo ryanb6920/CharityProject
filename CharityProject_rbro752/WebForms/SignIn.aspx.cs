@@ -43,6 +43,11 @@ namespace CharityProject_rbro752.WebForms
                     Globals.signedInDonor = objBLL.FindDonor(objUserOutput.Email, objUserOutput.Password);
                     Response.Redirect("RequestPickup.aspx");
                 }
+                else if (objUserOutput.UserType == "Charity")
+                {
+                    
+                    Response.Redirect("DonationManagement.aspx");
+                }
 
             }
             else

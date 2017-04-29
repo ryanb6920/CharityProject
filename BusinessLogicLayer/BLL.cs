@@ -56,6 +56,14 @@ namespace BusinessLogicLayer
             return objDonor;
         }
 
+        public Charities FindCharity(string email, string password)
+        {
+            Charities objCharity = new Charities();
+            DAL objDAL = new DAL();
+            objCharity = objDAL.FindCharity(email, password);
+            return objCharity;
+        }
+
         public DataSet GetCharities()
         {
             DAL objDal = new DAL();
