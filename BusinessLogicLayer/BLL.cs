@@ -32,6 +32,14 @@ namespace BusinessLogicLayer
             return output;
         }
 
+        public int AddUserBLL(Users objUser)
+        {
+            int output;
+            DAL objDal = new DAL();
+            output = objDal.AddUserDAL(objUser);
+            return output;
+        }
+
         public DataSet GetCharities()
         {
             DAL objDal = new DAL();

@@ -67,6 +67,31 @@ namespace DataAccessLayer
             return output;
         }
 
+        public int AddUserDAL(Users objUser)
+        {
+            int output = 0;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"INSERT INTO [Users] (Email, Password, UserType)
+                                        VALUES ('{0}','{1}','{2}')",
+                                        objUser.Email,objUser.Password,objUser.UserType);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                output = command.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return output;
+        }
+
         public int RequestPickupDAL(Donation objDonation)
         {
             int output = 0;
