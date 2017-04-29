@@ -19,6 +19,17 @@ namespace DataAccessLayer
             ConnectionString = ConfigurationManager.ConnectionStrings["CharityProjectDB"].ConnectionString;
         }
 
+        
+        public string GetColumnValue(SqlDataReader dr, string columnName)
+        {
+            string columnValue = string.Empty;
+            if (dr[columnName] != null && dr[columnName] != DBNull.Value)
+            {
+                columnValue = dr[columnName].ToString();
+            }
+            return columnValue;
+        }
+
         public int DonorSignUpDAL(Donors objDonor)
         {
             int output = 0;
@@ -96,7 +107,7 @@ namespace DataAccessLayer
         {
             int output = 0;
             SqlConnection connection = new SqlConnection(ConnectionString);
-            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, DropOffDate, NoItems, NoRecycledItems")
+            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, DropOffDate, NoItems, NoRecycledItems");
             return output;
         }
 
@@ -109,6 +120,80 @@ namespace DataAccessLayer
             dataAdapter.Fill(ds, "Charities");
             return ds;
         }
+
+        public Users SignInDal(Users objUserMaster)
+        {
+            Users objUser = null;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"SELECT TOP 1 * FROM [Users]
+                                            WHERE Email = '{0}' AND Password = '{1}'",
+                                            objUserMaster.Email, objUserMaster.Password);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    objUser = new Users();
+                    if (dr.Read())
+                    {
+                        objUser.Email = GetColumnValue(dr, "Email");
+                        objUser.Password = GetColumnValue(dr, "Password");
+                        objUser.UserType = GetColumnValue(dr, "UserType");
+                    }                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return objUser;
+        }
+
+        public Donors FindDonor(string email, string password)
+        {
+            Donors objDonors = null;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"SELECT TOP 1 * FROM [Donors]
+                                            WHERE Email = '{0}' AND Password = '{1}'",
+                                            email,password);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    objDonors = new Donors();
+                    if (dr.Read())
+                    {
+                        objDonors.Id = Convert.ToInt32(GetColumnValue(dr, "Id"));
+                        objDonors.FirstName = GetColumnValue(dr, "FirstName");
+                        objDonors.LastName = GetColumnValue(dr, "LastName");
+                        objDonors.Email = GetColumnValue(dr, "Email");
+                        objDonors.Password = GetColumnValue(dr, "Password");
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return objDonors;
+        }
+        
 
     }
 }

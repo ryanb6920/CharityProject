@@ -26,7 +26,8 @@ namespace CharityProject_rbro752.WebForms
 
         protected void btnSubmitPickupRequest_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", string.Format("alert('{0}'); window.location.href = 'RequestPickup.aspx';",selectCharity.Value), true);
+            ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", string.Format("alert('{0} -:- {1}'); window.location.href = 'RequestPickup.aspx';", selectCharity.Value,Globals.signedInDonor.Id), true);
+
         }
     }
 }

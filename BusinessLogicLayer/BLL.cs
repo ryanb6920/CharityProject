@@ -40,6 +40,22 @@ namespace BusinessLogicLayer
             return output;
         }
 
+        public Users SignInBLL(Users objUserMaster)
+        {
+            Users objUser = new Users();
+            DAL objDAL = new DAL();
+            objUser = objDAL.SignInDal(objUserMaster);
+            return objUser;
+        }
+
+        public Donors FindDonor(string email, string password)
+        {
+            Donors objDonor = new Donors();
+            DAL objDAL = new DAL();
+            objDonor = objDAL.FindDonor(email,password);
+            return objDonor;
+        }
+
         public DataSet GetCharities()
         {
             DAL objDal = new DAL();
