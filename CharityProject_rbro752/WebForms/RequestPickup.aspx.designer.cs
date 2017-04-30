@@ -31,15 +31,6 @@ namespace CharityProject_rbro752.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputPickupDate;
         
         /// <summary>
-        /// inputPickupTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputPickupTime;
-        
-        /// <summary>
         /// donationType control.
         /// </summary>
         /// <remarks>

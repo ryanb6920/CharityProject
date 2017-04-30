@@ -107,7 +107,23 @@ namespace DataAccessLayer
         {
             int output = 0;
             SqlConnection connection = new SqlConnection(ConnectionString);
-            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, DropOffDate, NoItems, NoRecycledItems");
+            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, Status)
+                                        VALUES ('{0}','{1}','{2}','{3}','{4}')",
+                                        objDonation.DonorId, objDonation.Category, objDonation.PickupDate, objDonation.Recipient,objDonation.Status);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                output = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
             return output;
         }
 

@@ -14,6 +14,7 @@ namespace CharityProject_rbro752.WebForms
         public static Users signedInUser;
         public static Donors signedInDonor;
         public static Charities signedInCharity;
+        
     }
 
     public partial class SignIn : System.Web.UI.Page
@@ -45,10 +46,9 @@ namespace CharityProject_rbro752.WebForms
                 }
                 else if (objUserOutput.UserType == "Charity")
                 {
-                    
+                    Globals.signedInCharity = objBLL.FindCharity(objUserOutput.Email, objUserOutput.Password);
                     Response.Redirect("DonationManagement.aspx");
                 }
-
             }
             else
             {

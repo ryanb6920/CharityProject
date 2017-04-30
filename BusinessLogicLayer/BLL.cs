@@ -56,6 +56,14 @@ namespace BusinessLogicLayer
             return objDonor;
         }
 
+        public int RequestPickupBLL(Donation objDonation)
+        {
+            int output;
+            DAL objDal = new DAL();
+            output = objDal.RequestPickupDAL(objDonation);
+            return output;
+        }
+
         public Charities FindCharity(string email, string password)
         {
             Charities objCharity = new Charities();

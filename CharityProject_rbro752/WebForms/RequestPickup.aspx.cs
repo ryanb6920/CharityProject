@@ -26,7 +26,27 @@ namespace CharityProject_rbro752.WebForms
 
         protected void btnSubmitPickupRequest_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", string.Format("alert('{0} -:- {1}'); window.location.href = 'RequestPickup.aspx';", selectCharity.Value,Globals.signedInDonor.Id), true);
+            int output;
+
+            BLL objBLL = new BLL();
+
+            Donation objDonation = new Donation();
+            objDonation.DonorId = Globals.signedInDonor.Id;
+            objDonation.Category = donationType.Value;
+            objDonation.PickupDate = Convert.ToDateTime(inputPickupDate.Value);
+            objDonation.Recipient = Convert.ToInt32(selectCharity.Value);
+            objDonation.Status = "Awaiting Pickup";
+
+            output = objBLL.RequestPickupBLL(objDonation);
+
+            if (output > 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Pickup Request Submitted'); window.location.href = 'RequestPickup.aspx';", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Pickup Request Failed'); window.location.href = 'RequestPickup.aspx';", true);
+            }
         }
     }
 }
