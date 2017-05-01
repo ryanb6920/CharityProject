@@ -55,17 +55,17 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="WebForms/SignIn.aspx">Sign In</a></li>
-                        <li><a runat="server" href="WebForms/DonorSignUp.aspx">Donor Sign Up</a></li>
-                        <li><a runat="server" href="WebForms/CharitySignUp.aspx">Charity Sign Up</a></li>
                         <li><a runat="server" href="Webforms/AnalyticalDashboard.aspx">Dashboard</a></li>
                         <li><a runat="server" href="Webforms/RequestPickup.aspx">Request Pickup</a></li>
-                    </ul>
+                        <li><a runat="server" href="Webforms/DonationManagement.aspx">Manage Donations</a></li>
+                        <li><a runat="server" href="Webforms/ListCharities.aspx">Charity List</a></li>
+                    </ul>                    
                 </div>
             </div>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <h3>HELLO PEOPLE</h3>
             </asp:ContentPlaceHolder>
             <hr />
             <footer>

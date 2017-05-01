@@ -15,7 +15,7 @@
 
             <!-- Logo Goes Here -->            
             <div class="logo col-sm-2">
-                <img src="../images/logo_temp.jpg" width="150px" />
+                <img src="../images/logo.jpg" width="150px" />
             </div>
 
             <!-- Title/Slogan -->

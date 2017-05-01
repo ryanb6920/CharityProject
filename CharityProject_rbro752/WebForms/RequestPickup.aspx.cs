@@ -14,6 +14,10 @@ namespace CharityProject_rbro752.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Globals.signedInUser == null)
+            {
+                Response.Redirect("SignIn.aspx");
+            }
             if (!IsPostBack)
             {
                 BLL objBLL = new BLL();

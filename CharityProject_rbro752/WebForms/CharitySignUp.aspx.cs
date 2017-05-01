@@ -20,7 +20,7 @@ namespace CharityProject_rbro752.WebForms
         {
             if(passwordSignUp.Value == passwordConfirmSignUp.Value)
             {
-                int output;
+                int outputCharity,outputUser;
                 BLL objBLL = new BLL();
                 Charities objCharity = new Charities();
                 objCharity.CharityName = charityNameTxt.Value;
@@ -35,13 +35,20 @@ namespace CharityProject_rbro752.WebForms
                 }
                 objCharity.URL = websiteURL.Value;
 
-                output = objBLL.CharitySignUpBLL(objCharity);
+                outputCharity = objBLL.CharitySignUpBLL(objCharity);
 
-                if(output > 0)
+                Users objUser = new Users();
+                objUser.Email = emailSignUp.Value;
+                objUser.Password = passwordSignUp.Value;
+                objUser.UserType = "Charity";
+
+                outputUser = objBLL.AddUserBLL(objUser);
+
+                if (outputCharity > 0 && outputUser > 0)
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Succesfully Registered as Charity'); window.location.href = 'CharitySignUp.aspx';", true);
                 }
-                else
+                else if (outputCharity <= 0 || outputUser <= 0)
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Registration Failed'); window.location.href = 'CharitySignUp.aspx';", true);
                 }

@@ -11,6 +11,14 @@ namespace CharityProject_rbro752.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Globals.signedInUser == null)
+            {
+                Response.Redirect("SignIn.aspx");
+            }
+        }
+
+        protected void btnUpdateDonation_Click(object sender, EventArgs e)
+        {
 
         }
     }
