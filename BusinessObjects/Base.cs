@@ -48,11 +48,12 @@ namespace BusinessObjects
         public int Id { get; set; }
         public int DonorId { get; set; }
         public string Category { get; set; }
+        public string PickupAddress { get; set; }
         public DateTime PickupDate { get; set; }
         public int Recipient { get; set; }
-        public DateTime DropOffDate { get; set; }
-        public int NoItems { get; set; }
-        public int NoRecycledItems { get; set; }
+        public DateTime? DropOffDate { get; set; }
+        public int? NoItems { get; set; }
+        public int? NoRecycledItems { get; set; }
         public string Status { get; set; }
         public DateTime CreatedDate { get; set; }
     }

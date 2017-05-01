@@ -78,6 +78,20 @@ namespace BusinessLogicLayer
             return objDal.GetCharities();
         }
 
+        public DataSet GetDonations()
+        {
+            DAL objDal = new DAL();
+            return objDal.GetDonations();
+        }
+
+        public Donation FindDonation(int id)
+        {
+            Donation objDonation = new Donation();
+            DAL objDal = new DAL();
+            objDonation = objDal.FindDonation(id);
+            return objDonation;
+        }
+
 
     }
 }

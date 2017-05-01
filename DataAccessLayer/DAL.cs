@@ -54,6 +54,8 @@ namespace DataAccessLayer
             return output;
         }
 
+       
+
         public int CharitySignUpDAL(Charities objCharity)
         {
             int output = 0;
@@ -107,9 +109,9 @@ namespace DataAccessLayer
         {
             int output = 0;
             SqlConnection connection = new SqlConnection(ConnectionString);
-            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupDate, Recipient, Status)
-                                        VALUES ('{0}','{1}','{2}','{3}','{4}')",
-                                        objDonation.DonorId, objDonation.Category, objDonation.PickupDate, objDonation.Recipient,objDonation.Status);
+            string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupAddress, PickupDate, Recipient, Status)
+                                        VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')",
+                                        objDonation.DonorId, objDonation.Category, objDonation.PickupAddress, objDonation.PickupDate, objDonation.Recipient,objDonation.Status);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
@@ -125,6 +127,16 @@ namespace DataAccessLayer
                 connection.Close();
             }
             return output;
+        }
+
+        public DataSet GetDonations()
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = "select * from Donation";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, connection);
+            DataSet ds = new DataSet();
+            dataAdapter.Fill(ds, "Donation");
+            return ds;
         }
 
         public DataSet GetCharities()
@@ -172,6 +184,60 @@ namespace DataAccessLayer
             return objUser;
         }
 
+        public Donation FindDonation(int id)
+        {
+            Donation objDonation = new Donation();
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"SELECT * FROM [Donation] WHERE Id = '{0}'", id);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    if (dr.Read())
+                    {
+                        objDonation.Id = Convert.ToInt32(GetColumnValue(dr, "Id"));
+                        objDonation.DonorId = Convert.ToInt32(GetColumnValue(dr, "DonorId"));
+                        objDonation.Category = GetColumnValue(dr, "Category");
+                        objDonation.PickupAddress = GetColumnValue(dr, "PickupAddress");
+                        objDonation.PickupDate = Convert.ToDateTime(GetColumnValue(dr, "PickupDate"));
+                        objDonation.Recipient = Convert.ToInt32(GetColumnValue(dr, "Recipient"));
+
+                        if (objDonation.DropOffDate != null)
+                        {
+                            objDonation.DropOffDate = Convert.ToDateTime(GetColumnValue(dr, "DropOffDate"));
+                        }
+                        else { objDonation.DropOffDate = null; }
+
+                        if (objDonation.NoItems != null)
+                        {
+                            objDonation.NoItems = Convert.ToInt32(GetColumnValue(dr, "NoItems"));
+                        }
+                        else { objDonation.NoItems = null; }
+
+                        if (objDonation.NoRecycledItems != null)
+                        {
+                            objDonation.NoRecycledItems = Convert.ToInt32(GetColumnValue(dr, "NoRecycledItems"));
+                        }
+                        else { objDonation.NoRecycledItems = null; }
+
+                        objDonation.Status = GetColumnValue(dr, "Status");                      
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return objDonation;
+        }
+                
         public Donors FindDonor(string email, string password)
         {
             Donors objDonors = null;
