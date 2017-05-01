@@ -85,22 +85,13 @@ namespace CharityProject_rbro752.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputText recipientTxt;
         
         /// <summary>
-        /// inputDropOffDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputDropOffDate;
-        
-        /// <summary>
         /// noItemsTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText noItemsTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl noItemsTxt;
         
         /// <summary>
         /// noRecItemsTxt control.
@@ -109,7 +100,16 @@ namespace CharityProject_rbro752.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText noRecItemsTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl noRecItemsTxt;
+        
+        /// <summary>
+        /// inputDropOffDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputDropOffDate;
         
         /// <summary>
         /// selectStatus control.

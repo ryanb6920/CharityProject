@@ -64,6 +64,14 @@ namespace BusinessLogicLayer
             return output;
         }
 
+        public int DonationUpdateBLL(Donation objDonation)
+        {
+            int output;
+            DAL objDAL = new DAL();
+            output = objDAL.DonationUpdateDAL(objDonation);
+            return output;
+        }
+
         public Charities FindCharity(string email, string password)
         {
             Charities objCharity = new Charities();

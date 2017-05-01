@@ -12,6 +12,7 @@
             </div>
 
         </div>
+        
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">
@@ -23,7 +24,7 @@
             </div>
             <div class="col-sm-4">
                 <br />
-                <asp:Button ID="findDonation" Text="Update" CssClass="btn btn-default" runat="server" OnClick="findDonation_Click" />
+                <asp:Button ID="findDonation" Text="Select" CssClass="btn btn-default" runat="server" OnClick="findDonation_Click" />
             </div>
             <div class="col-sm-2"></div>
         </div>
@@ -65,6 +66,16 @@
                     <label for="recipientTxt">Recipient:</label>
                     <input class="form-control" id="recipientTxt" placeholder="Category" disabled="" type="text" runat="server">
                 </div>
+                              
+                <div class="form-group">
+                    <label for="noItemsTxt">Number of Items</label>
+                    <input class="form-control" id="noItemsTxt" placeholder="Total Items" type="number" runat="server">
+                </div>
+
+                <div class="form-group">
+                    <label for="noRecItemsTxt">Number of Recycled Items</label>
+                    <input class="form-control" id="noRecItemsTxt" placeholder="Recycled Items" type="number" runat="server">
+                </div>
 
                 <div class="form-group">
                     <label for="inputDropOffDate">Drop Off Date</label>
@@ -72,22 +83,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="noItemsTxt">Number of Items</label>
-                    <input class="form-control" id="noItemsTxt" placeholder="Total Items" type="text" runat="server">
-                </div>
-
-                <div class="form-group">
-                    <label for="noRecItemsTxt">Number of Recycled Items</label>
-                    <input class="form-control" id="noRecItemsTxt" placeholder="Recycled Items" type="text" runat="server">
-                </div>
-
-                <div class="form-group">
                     <label for="selectStatus">Status:</label>
                     <select class="form-control" id="selectStatus" runat="server">
-                        <option>Awaiting Pickup</option>
-                        <option>At Depot</option>
-                        <option>Awaiting Pickup Drop Off</option>
-                        <option>Completed</option>
+                        <option id="AwaitingPickup">Awaiting Pickup</option>
+                        <option id="AtDepot">At Depot</option>
+                        <option id="AwaitingDropOff">Awaiting Drop Off</option>
+                        <option id="Completed">Completed</option>
+                        <option id="Cancelled">Cancelled</option>
                     </select>
                 </div>
 

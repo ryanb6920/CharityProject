@@ -54,7 +54,30 @@ namespace DataAccessLayer
             return output;
         }
 
-       
+        public int DonationUpdateDAL(Donation objDonation)
+        {
+            int output = 0;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"UPDATE [Donation]
+                                        SET DropOffDate = '{0}', NoItems = '{1}', NoRecycledItems = '{2}', Status = '{3}'
+                                        WHERE Id = {4}",
+                                        objDonation.DropOffDate,objDonation.NoItems,objDonation.NoRecycledItems,objDonation.Status,objDonation.Id);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                output = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return output;
+        }
 
         public int CharitySignUpDAL(Charities objCharity)
         {
@@ -205,21 +228,24 @@ namespace DataAccessLayer
                         objDonation.PickupDate = Convert.ToDateTime(GetColumnValue(dr, "PickupDate"));
                         objDonation.Recipient = Convert.ToInt32(GetColumnValue(dr, "Recipient"));
 
-                        if (objDonation.DropOffDate != null)
+                        string tempDOD = GetColumnValue(dr, "DropOffDate");                        
+                        if (tempDOD != "")
                         {
-                            objDonation.DropOffDate = Convert.ToDateTime(GetColumnValue(dr, "DropOffDate"));
+                            objDonation.DropOffDate = Convert.ToDateTime(tempDOD);
                         }
                         else { objDonation.DropOffDate = null; }
 
-                        if (objDonation.NoItems != null)
+                        string tempNI = GetColumnValue(dr, "NoItems");                        
+                        if (tempNI != "")
                         {
-                            objDonation.NoItems = Convert.ToInt32(GetColumnValue(dr, "NoItems"));
+                            objDonation.NoItems = Convert.ToInt32(tempNI);
                         }
                         else { objDonation.NoItems = null; }
 
-                        if (objDonation.NoRecycledItems != null)
+                        string tempRI = GetColumnValue(dr, "NoRecycledItems");
+                        if (tempRI != "")
                         {
-                            objDonation.NoRecycledItems = Convert.ToInt32(GetColumnValue(dr, "NoRecycledItems"));
+                            objDonation.NoRecycledItems = Convert.ToInt32(tempRI);
                         }
                         else { objDonation.NoRecycledItems = null; }
 
