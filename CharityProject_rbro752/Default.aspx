@@ -9,19 +9,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/DonorSignUp.aspx">
-                        <h2>Sign In</h2>
-                    </a>
+                    <form action="SignIn.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="Sign In" class="btn btn-default" />
+                    </div>
+                </form>
                 </div>
                 <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/DonorSignUp.aspx">
-                        <h2>Donor Sign Up</h2>
-                    </a>
+                    <form action="DonorSignUp.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="Donor Sign Up" class="btn btn-default" />
+                    </div>
+                </form>
                 </div>
                 <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/CharitySignUp.aspx">
-                        <h2>Charity Sign Up</h2>
-                    </a>
+                    <form action="CharitySignUp.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="Charity Sign Up" class="btn btn-default" />
+                    </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -31,19 +37,25 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/RequestPickup.aspx">
-                    <h2>Request a Pickup</h2>
-                </a>
+                <form action="ListCharities.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="Charity Lists" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/ListCharities.aspx">
-                    <h2>View our Charities</h2>
-                </a>
+                <form action="RequestPickup.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="Request a Pick Up" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/DonationManagement.aspx">
-                    <h2>Manage Your Donation</h2>
-                </a>
+                <form action="CharitySignUp.aspx" target="_blank">
+                    <div class="form-group">
+                        <input type="submit" value="View Donation Status" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
