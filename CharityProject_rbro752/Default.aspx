@@ -4,46 +4,58 @@
 
     <div class="jumbotron">
         <h1>Useless Is Useful</h1>
-        <h2>Sign Up Now!</h2>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/DonorSignUp.aspx">
-                        <h2>Sign In</h2>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/DonorSignUp.aspx">
-                        <h2>Donor Sign Up</h2>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a runat="server" class="btn btn-default" href="Webforms/CharitySignUp.aspx">
-                        <h2>Charity Sign Up</h2>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <h2>Sign Up Now!</h2>       
 
     </div>
 
     <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form action="WebForms/SignIn.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="Sign In" class="btn btn-default center-block"  />
+                    </div>
+                </form>
+                </div>
+                <div class="col-sm-4">
+                    <form action="WebForms/DonorSignUp.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="Donor Sign Up" class="btn btn-default center-block" />
+                    </div>
+                </form>
+                </div>
+                <div class="col-sm-4">
+                    <form action="WebForms/CharitySignUp.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="Charity Sign Up" class="btn btn-default center-block" />
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/RequestPickup.aspx">
-                    <h2>Request a Pickup</h2>
-                </a>
+                <form action="WebForms/ListCharities.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="Charity Lists" class="btn btn-default center-block" />
+                    </div>
+                </form>
             </div>
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/ListCharities.aspx">
-                    <h2>View our Charities</h2>
-                </a>
+                <form action="WebForms/RequestPickup.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="Request a Pick Up" class="btn btn-default center-block" />
+                    </div>
+                </form>
             </div>
             <div class="col-sm-4">
-                <a runat="server" class="btn btn-default" href="Webforms/DonationManagement.aspx">
-                    <h2>Manage Your Donation</h2>
-                </a>
+                <form action="WebForms/DonationManagement.aspx">
+                    <div class="form-group">
+                        <input type="submit" value="View Donation Status" class="btn btn-default center-block" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
