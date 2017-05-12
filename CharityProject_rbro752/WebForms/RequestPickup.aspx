@@ -15,17 +15,14 @@
             <div class="col-sm-2"></div>
 
             <div class="col-sm-4">
-
                 <div class="form-group">
                     <label for="textArea">Pickup Address</label>
                     <textarea class="form-control" rows="4" id="pickupAddress" runat="server"></textarea>
                 </div>
-
                 <div class="form-group">
                     <label for="inputPickupDate">Pickup Date</label>
                     <input type="date" id="inputPickupDate" class="form-control" runat="server"/>
-                </div>                               
-
+                </div>                              
             </div>
 
             <div class="col-lg-4">

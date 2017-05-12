@@ -49,7 +49,7 @@
                         <input type="password" id="passwordSignUp" placeholder="Enter Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
-                        <label for="passwordConfirmSignUp">Password:</label>
+                        <label for="passwordConfirmSignUp">Confirm Password:</label>
                         <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
                     </div>
                     <div class="form-group">
