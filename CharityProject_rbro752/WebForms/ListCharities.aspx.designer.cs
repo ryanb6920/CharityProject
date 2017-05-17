@@ -13,12 +13,21 @@ namespace CharityProject_rbro752.WebForms {
     public partial class ListCharities {
         
         /// <summary>
-        /// DataList1 control.
+        /// CharityDataList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.DataList CharityDataList;
+        
+        /// <summary>
+        /// CharityProjectDB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CharityProjectDB;
     }
 }
