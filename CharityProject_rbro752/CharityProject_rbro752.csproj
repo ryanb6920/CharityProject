@@ -130,6 +130,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="images\E_SDG_Icons-01.jpg" />
+    <Content Include="images\E_SDG_Icons-02.jpg" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo_temp.jpg" />
     <Content Include="WebForms\AnalyticalDashboard.aspx" />
