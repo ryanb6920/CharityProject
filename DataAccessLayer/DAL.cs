@@ -19,7 +19,7 @@ namespace DataAccessLayer
             ConnectionString = ConfigurationManager.ConnectionStrings["CharityProjectDB"].ConnectionString;
         }
 
-        
+
         public string GetColumnValue(SqlDataReader dr, string columnName)
         {
             string columnValue = string.Empty;
@@ -61,7 +61,7 @@ namespace DataAccessLayer
             string sql = string.Format(@"UPDATE [Donation]
                                         SET DropOffDate = '{0}', NoItems = '{1}', NoRecycledItems = '{2}', Status = '{3}'
                                         WHERE Id = {4}",
-                                        objDonation.DropOffDate,objDonation.NoItems,objDonation.NoRecycledItems,objDonation.Status,objDonation.Id);
+                                        objDonation.DropOffDate, objDonation.NoItems, objDonation.NoRecycledItems, objDonation.Status, objDonation.Id);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
@@ -85,7 +85,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"INSERT INTO [Charities] (CharityName, Email, URL, PhoneNo, OpenHours, Address, Password)
                                         VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
-                objCharity.CharityName,objCharity.Email,objCharity.URL,objCharity.PhoneNo,objCharity.OpenHours,objCharity.Address,objCharity.Password);
+                objCharity.CharityName, objCharity.Email, objCharity.URL, objCharity.PhoneNo, objCharity.OpenHours, objCharity.Address, objCharity.Password);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
@@ -109,14 +109,14 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"INSERT INTO [Users] (Email, Password, UserType)
                                         VALUES ('{0}','{1}','{2}')",
-                                        objUser.Email,objUser.Password,objUser.UserType);
+                                        objUser.Email, objUser.Password, objUser.UserType);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
                 connection.Open();
                 output = command.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -134,7 +134,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupAddress, PickupDate, Recipient, Status)
                                         VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')",
-                                        objDonation.DonorId, objDonation.Category, objDonation.PickupAddress, objDonation.PickupDate, objDonation.Recipient,objDonation.Status);
+                                        objDonation.DonorId, objDonation.Category, objDonation.PickupAddress, objDonation.PickupDate, objDonation.Recipient, objDonation.Status);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
@@ -192,7 +192,7 @@ namespace DataAccessLayer
                         objUser.Email = GetColumnValue(dr, "Email");
                         objUser.Password = GetColumnValue(dr, "Password");
                         objUser.UserType = GetColumnValue(dr, "UserType");
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -228,14 +228,14 @@ namespace DataAccessLayer
                         objDonation.PickupDate = Convert.ToDateTime(GetColumnValue(dr, "PickupDate"));
                         objDonation.Recipient = Convert.ToInt32(GetColumnValue(dr, "Recipient"));
 
-                        string tempDOD = GetColumnValue(dr, "DropOffDate");                        
+                        string tempDOD = GetColumnValue(dr, "DropOffDate");
                         if (tempDOD != "")
                         {
                             objDonation.DropOffDate = Convert.ToDateTime(tempDOD);
                         }
                         else { objDonation.DropOffDate = null; }
 
-                        string tempNI = GetColumnValue(dr, "NoItems");                        
+                        string tempNI = GetColumnValue(dr, "NoItems");
                         if (tempNI != "")
                         {
                             objDonation.NoItems = Convert.ToInt32(tempNI);
@@ -249,7 +249,7 @@ namespace DataAccessLayer
                         }
                         else { objDonation.NoRecycledItems = null; }
 
-                        objDonation.Status = GetColumnValue(dr, "Status");                      
+                        objDonation.Status = GetColumnValue(dr, "Status");
                     }
                 }
             }
@@ -263,14 +263,14 @@ namespace DataAccessLayer
             }
             return objDonation;
         }
-                
+
         public Donors FindDonor(string email, string password)
         {
             Donors objDonors = null;
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"SELECT TOP 1 * FROM [Donors]
                                             WHERE Email = '{0}' AND Password = '{1}'",
-                                            email,password);
+                                            email, password);
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
@@ -287,7 +287,7 @@ namespace DataAccessLayer
                         objDonors.Email = GetColumnValue(dr, "Email");
                         objDonors.Password = GetColumnValue(dr, "Password");
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -331,7 +331,7 @@ namespace DataAccessLayer
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -341,7 +341,95 @@ namespace DataAccessLayer
             }
             return objCharity;
         }
+
+        public List<Data> GetIndividualChartData(DataTable dt)
+        {
+            List<Data> dataList = new List<Data>();
+            string ColumnName = "";
+            int val = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                if (dr[0].GetType().Name == "DateTime")
+                {
+                    DateTime dtTime;
+                    DateTime.TryParse(dr[0].ToString(), out dtTime);
+
+                    ColumnName = dtTime.ToShortDateString();
+                }
+                else
+                    ColumnName = dr[0].ToString();
+
+
+                val = Convert.ToInt32(dr[1]);
+                dataList.Add(new Data(ColumnName, val));
+            }
+            return dataList;
+        }
         
+        public List<ChartData> GetDataAnalyticsDAL()
+        {
+            List<ChartData> lstChartData = new List<ChartData>();
+            DataSet ds = null;
+            DataTable dt = new DataTable();
+            using (SqlConnection cn = new SqlConnection(ConnectionString))
+            {
+                cn.Open();
+                string cmd1 = "select Status, count(Id)  'Number of Donations' from Donation group by Status";
+                using (SqlCommand cmd = new SqlCommand(cmd1, cn))
+                {
+                    ds = new DataSet();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(ds);
+                    dt = ds.Tables[0];
+                    List<Data> dataList = GetIndividualChartData(dt);
+                    lstChartData.Add(new ChartData() { ChartType = "PieChart", lstData = dataList });
+                }
+
+                string cmd2 = "select Category, count(Id)  'Number of Donations' from Donation group by Category";//select DonationType, CharityName, count(DonationId)  'Number of Donations' from Donations group by DonationType, CharityName
+                using (SqlCommand cmd = new SqlCommand(cmd2, cn))
+                {
+                    ds = new DataSet();
+                    dt.Clear();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(ds);
+                    dt = ds.Tables[0];
+                    List<Data> dataList = GetIndividualChartData(dt);
+                    lstChartData.Add(new ChartData() { ChartType = "ColumnChart1", lstData = dataList });
+                }
+
+                string cmd3 = @"select'Number of Donations', count(Id) from Donation
+                                union all
+                               select 'Number of Recipients', count(Id) from Charities";
+                using (SqlCommand cmd = new SqlCommand(cmd3, cn))
+                {
+                    ds = new DataSet();
+                    dt.Clear();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(ds);
+                    dt = ds.Tables[0];
+                    List<Data> dataList = GetIndividualChartData(dt);
+                    lstChartData.Add(new ChartData() { ChartType = "ColumnChart2", lstData = dataList });
+                }
+
+                string cmd4 = "select CONVERT(date, CreatedDate) 'Dates', count(Id) 'Number of Donations' from Donation group by CONVERT(date, CreatedDate)";
+                using (SqlCommand cmd = new SqlCommand(cmd4, cn))
+                {
+                    ds = new DataSet();
+                    dt.Clear();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(ds);
+                    dt = ds.Tables[0];
+                    List<Data> dataList = GetIndividualChartData(dt);
+                    lstChartData.Add(new ChartData() { ChartType = "ColumnChart3", lstData = dataList });
+                }
+            }
+
+
+            return lstChartData;
+
+        }
+
 
     }
 }

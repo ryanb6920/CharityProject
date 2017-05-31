@@ -100,6 +100,16 @@ namespace BusinessLogicLayer
             return objDonation;
         }
 
+        public List<ChartData> GetDataAnalyticsBLL()
+        {
+            List<ChartData> output;
+            DAL objDal = new DAL();
+            output = objDal.GetDataAnalyticsDAL();// call DeleteDonationDAL method of DAL
+            return output;
+
+        }
+
+
 
     }
 }

@@ -57,4 +57,25 @@ namespace BusinessObjects
         public string Status { get; set; }
         public DateTime CreatedDate { get; set; }
     }
+
+    public class Data
+    {
+        public string ColumnName = "";
+        public int Value = 0;
+
+        public Data() { }
+
+        public Data(string columnName, int value)
+        {
+            ColumnName = columnName;
+            Value = value;
+        }
+    }
+
+    public class ChartData
+    {
+        public string ChartType = "";
+        public List<Data> lstData;
+    }
+
 }

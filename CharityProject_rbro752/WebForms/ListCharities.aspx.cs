@@ -13,6 +13,10 @@ namespace CharityProject_rbro752.WebForms
         {
             
         }
-             
+
+        protected void CharityDataList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

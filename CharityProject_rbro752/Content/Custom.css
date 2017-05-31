@@ -11,10 +11,28 @@ input[type=button] {
 
 input[type=submit] {
     width: 200px;
-    align-self: 
+    
 }
 
 #CharitySlogan {
     text-align: left;
     font-size:71px;
 }
+
+.btn-home-page-link{
+    border: 1px solid black;
+    border-radius:15px;
+
+}
+.btn-home-page-link:hover{
+    background-color:white;
+    color:black;
+
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+}
+
