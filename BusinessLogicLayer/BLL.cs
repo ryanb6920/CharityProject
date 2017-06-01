@@ -109,6 +109,11 @@ namespace BusinessLogicLayer
 
         }
 
+        public void send()
+        {
+            DAL objDAL = new DAL();
+            objDAL.send();
+        }
 
 
     }

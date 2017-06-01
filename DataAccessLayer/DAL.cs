@@ -7,6 +7,10 @@ using BusinessObjects;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System;
+using RestSharp;//Adding reference of RestSharp will be explained in next section.
+using RestSharp.Authenticators;
+
 
 namespace DataAccessLayer
 {
@@ -429,6 +433,41 @@ namespace DataAccessLayer
             return lstChartData;
 
         }
+
+        public void send()
+        {
+            /*
+             * Domain: sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org
+             * Key: key-f1eea887912d47d16655bca93ef5eb76
+             * Email: r.s.b@hotmail.co.nz
+             *  
+             */
+
+            try
+            {
+                RestClient client = new RestClient();
+                client.BaseUrl = new Uri("https://api.mailgun.net/v3");
+                client.Authenticator = new HttpBasicAuthenticator("api", "key-f1eea887912d47d16655bca93ef5eb76");// replace this key with your key.
+
+                RestRequest req = new RestRequest();
+                req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
+                req.Resource = "{domain}/messages";
+                req.AddParameter("from", "Admin @ Useless is Useful <postmaster@sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org>");//default smtp login from your sandbox  domain details.
+                req.AddParameter("to", "Test <r.s.b@hotmail.co.nz>");//authorized email only.
+                req.AddParameter("subject", "Thank You");// Subject of your email
+                req.AddParameter("text", "Thank you for Donating Clothes. You truly have made a difference.");// Body of your email.
+                req.Method = Method.POST;
+                client.Execute(req);
+
+            }
+            catch (Exception ex)
+            {
+                //log exception.
+                throw ex;
+            }
+
+        }
+
 
 
     }
