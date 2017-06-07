@@ -55,6 +55,13 @@ namespace BusinessLogicLayer
             objDonor = objDAL.FindDonor(email,password);
             return objDonor;
         }
+        public Donors FindDonor(int donorId)
+        {
+            Donors objDonor = new Donors();
+            DAL objDAL = new DAL();
+            objDonor = objDAL.FindDonor(donorId);
+            return objDonor;
+        }
 
         public int RequestPickupBLL(Donation objDonation)
         {
@@ -109,11 +116,27 @@ namespace BusinessLogicLayer
 
         }
 
-        public void send()
+        public void send(Donors objDonor)
         {
             DAL objDAL = new DAL();
-            objDAL.send();
+            objDAL.send(objDonor);
         }
+        public void send(Charities objCharity)
+        {
+            DAL objDAL = new DAL();
+            objDAL.send(objCharity);
+        }
+        public void send(Donation objDonation,Charities objCharity,Donors objDonor)
+        {
+            DAL objDAL = new DAL();
+            objDAL.send(objDonation,objCharity,objDonor);
+        }
+        public void send(Donation objDonation, Donors objDonor, Charities objCharity)
+        {
+            DAL objDAL = new DAL();
+            objDAL.send(objDonation, objDonor, objCharity);
+        }
+
 
 
     }

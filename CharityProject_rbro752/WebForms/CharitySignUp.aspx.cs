@@ -46,6 +46,7 @@ namespace CharityProject_rbro752.WebForms
 
                 if (outputCharity > 0 && outputUser > 0)
                 {
+                    objBLL.send(objCharity);
                     ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Succesfully Registered as Charity'); window.location.href = 'CharitySignUp.aspx';", true);
                 }
                 else if (outputCharity <= 0 || outputUser <= 0)

@@ -49,13 +49,13 @@ namespace CharityProject_rbro752.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputText donorId;
         
         /// <summary>
-        /// categoryTxt control.
+        /// categorySelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText categoryTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect categorySelect;
         
         /// <summary>
         /// pickupDateTxt control.
@@ -64,7 +64,7 @@ namespace CharityProject_rbro752.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText pickupDateTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl pickupDateTxt;
         
         /// <summary>
         /// pickupAddress control.
@@ -76,13 +76,13 @@ namespace CharityProject_rbro752.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea pickupAddress;
         
         /// <summary>
-        /// recipientTxt control.
+        /// selectCharity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText recipientTxt;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selectCharity;
         
         /// <summary>
         /// noItemsTxt control.

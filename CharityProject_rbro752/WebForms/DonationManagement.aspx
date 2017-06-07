@@ -44,18 +44,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="categoryTxt">Donation Category:</label>
-                    <input class="form-control" id="categoryTxt" placeholder="Category" disabled="" type="text" runat="server">
+                    <label for="categorySelect">Donation Category:</label>
+                    <select class="form-control" id="categorySelect" runat="server">
+                            <option>Clothes</option>
+                            <option>Food</option>
+                            <option>Toys</option>
+                            <option>Electronics</option>
+                            <option>Books</option>
+                            <option>Other</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="pickupDateTxt">Pickup Date:</label>
-                    <input class="form-control" id="pickupDateTxt" placeholder="Category" disabled="" type="text" runat="server">
+                    <input class="form-control" id="pickupDateTxt" placeholder="Category" type="date" runat="server" value="dd. MM. yyyy">
                 </div>
 
                 <div class="form-group">
                     <label for="textArea">Pickup Address</label>
-                    <textarea class="form-control" rows="4" id="pickupAddress" disabled="" runat="server"></textarea>
+                    <textarea class="form-control" rows="4" id="pickupAddress"  runat="server"></textarea>
                 </div>
                 
 
@@ -63,8 +70,9 @@
             <div class="col-sm-4">
 
                 <div class="form-group">
-                    <label for="recipientTxt">Recipient:</label>
-                    <input class="form-control" id="recipientTxt" placeholder="Category" disabled="" type="text" runat="server">
+                    <label for="selectCharity">Recipient:</label>
+                    <select class="form-control" id="selectCharity" runat="server">                  
+                    </select>
                 </div>
                               
                 <div class="form-group">
