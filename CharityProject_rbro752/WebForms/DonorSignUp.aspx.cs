@@ -47,8 +47,7 @@ namespace CharityProject_rbro752.WebForms
                 else if (outputDonor <= 0 || outputUser <=0)
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Donor Registration Failed'); window.location.href = 'DonorSignUp.aspx';", true);
-                }           
-                                                 
+                }                                       
             }
             else
             {
