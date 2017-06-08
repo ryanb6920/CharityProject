@@ -10,7 +10,7 @@ using BusinessObjects;
 namespace CharityProject_rbro752.WebForms
 {
     public static class Globals
-    {
+    {        
         public static Users signedInUser;
         public static Donors signedInDonor;
         public static Charities signedInCharity;

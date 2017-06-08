@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <label for="pickupDateTxt">Pickup Date:</label>
-                    <input class="form-control" id="pickupDateTxt" placeholder="Category" type="date" runat="server" value="dd. MM. yyyy">
+                    <input class="form-control" id="pickupDateTxt" onclick="" placeholder="Category" type="date" runat="server" value="dd. MM. yyyy">
                 </div>
 
                 <div class="form-group">
@@ -93,15 +93,9 @@
                         <option id="Cancelled">Cancelled</option>
                     </select>
                 </div>
-
                 <asp:Button ID="btnUpdateDonation" Text="Update" CssClass="btn btn-success" runat="server" OnClick="btnUpdateDonation_Click" />
-
-
-
             </div>
             <div class="col-sm-2"></div>
         </div>
-
     </div>
-
 </asp:Content>

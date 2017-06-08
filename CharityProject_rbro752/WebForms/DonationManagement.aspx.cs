@@ -11,13 +11,13 @@ using BusinessObjects;
  To alter records on the form you must be signed in as an admin  
                  Details:    -Email: admin@admin.com 
                              -Password: admin
- */ 
+ */
 
 namespace CharityProject_rbro752.WebForms
 {
     public partial class DonationManagement : System.Web.UI.Page
     {
-        static int currentDonation=1;
+        static int currentDonation = 1;
         static int currentDonorID = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,7 +34,6 @@ namespace CharityProject_rbro752.WebForms
                 selectCharity.DataValueField = "Id";
                 selectCharity.DataBind();
 
-
                 dropDownSelect.DataSource = objBLL.GetDonations();
                 dropDownSelect.DataTextField = "Id";
                 dropDownSelect.DataValueField = "Id";
@@ -47,8 +46,9 @@ namespace CharityProject_rbro752.WebForms
 
         protected void btnUpdateDonation_Click(object sender, EventArgs e)
         {
+
             //ClientScript.RegisterStartupScript(this.GetType(),"alertwindow", string.Format("alert('{0}'); window.location.href = 'DonationManagement.aspx';",inputDropOffDate.Value), true);
-            
+
             BLL objBLL = new BLL();
             Donation objDonation = new Donation();
             int output = 0;
@@ -78,14 +78,15 @@ namespace CharityProject_rbro752.WebForms
                 Donors objDonor = objBLL.FindDonor(objDonation.DonorId);
                 Charities objCharity = objBLL.FindCharity(objDonation.Recipient);
                 objBLL.send(objDonation, objDonor, objCharity);
-                objBLL.send(objDonation, objCharity, objDonor);                           
+                objBLL.send(objDonation, objCharity, objDonor);
                 ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Update Successful'); window.location.href = 'DonationManagement.aspx';", true);
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Update Failed'); window.location.href = 'DonationManagement.aspx';", true);
             }
-            PopulateFields(objBLL.FindDonation(currentDonation));            
+            PopulateFields(objBLL.FindDonation(currentDonation));
+
         }
 
         protected void findDonation_Click(object sender, EventArgs e)
@@ -101,25 +102,24 @@ namespace CharityProject_rbro752.WebForms
             noRecItemsTxt.Disabled = false;
             inputDropOffDate.Disabled = false;
             selectStatus.Disabled = false;
-            Donors objDonor = objBLL.FindDonor(objDonation.DonorId); 
+            Donors objDonor = objBLL.FindDonor(objDonation.DonorId);
             donationId.Value = objDonation.Id.ToString();
             currentDonation = objDonation.Id;
             currentDonorID = objDonation.DonorId;
-            donorId.Value = objDonor.FirstName+" "+objDonor.LastName;
+            donorId.Value = objDonor.FirstName + " " + objDonor.LastName;
             categorySelect.Value = objDonation.Category;
             pickupAddress.Value = objDonation.PickupAddress;
             pickupDateTxt.Value = objDonation.PickupDate.ToString("yyyy-MM-dd");
             //recipientTxt.Value = objDonation.Recipient.ToString();
             selectCharity.Value = objDonation.Recipient.ToString();
-            if(objDonation.DropOffDate != null)
+            if (objDonation.DropOffDate != null)
             {
                 inputDropOffDate.Value = objDonation.DropOffDate.Value.ToString("yyyy-MM-dd");
             }
             else
             {
-                inputDropOffDate.Value = null;
-                
-            }            
+                inputDropOffDate.Value = DateTime.MinValue.ToShortDateString();
+            }
             noItemsTxt.Value = objDonation.NoItems.ToString();
             noRecItemsTxt.Value = objDonation.NoRecycledItems.ToString();
             selectStatus.Value = objDonation.Status;
@@ -142,7 +142,6 @@ namespace CharityProject_rbro752.WebForms
         {
             BLL objBLL = new BLL();
             PopulateFields(objBLL.FindDonation(Convert.ToInt32(dropDownSelect.SelectedItem.Value)));
-            
         }
     }
 }

@@ -11,7 +11,8 @@ namespace CharityProject_rbro752
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (WebForms.Globals.signedInUser != null)
+                SignInLink.InnerText = "Sign Out";
         }
     }
 }

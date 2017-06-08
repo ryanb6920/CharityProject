@@ -11,6 +11,30 @@ namespace CharityProject_rbro752
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (WebForms.Globals.signedInUser == null)
+            {
+                lnkSignOut.Visible = false;
+                lblHI.Visible = false;
+                lblLoggedInUser.Visible = false;
+            }
+            else
+            {
+                lnkSignOut.Visible = true;
+                lblHI.Visible = true;
+                lblLoggedInUser.Visible = true;
+                if (WebForms.Globals.signedInUser.UserType == "Donor")
+                    lblLoggedInUser.Text = WebForms.Globals.signedInDonor.FirstName + " ";
+                else if (WebForms.Globals.signedInUser.UserType == "Charity")
+                    lblLoggedInUser.Text = WebForms.Globals.signedInCharity.CharityName + " ";
+                else if (WebForms.Globals.signedInUser.UserType == "Admin")
+                    lblLoggedInUser.Text = "Admin ";
+                
+            }
+        }
+
+        protected void lnkSignOut_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForms/SignIn.aspx");
             
         }
     }

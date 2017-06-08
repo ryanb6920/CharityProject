@@ -13,6 +13,33 @@ namespace CharityProject_rbro752 {
     public partial class SiteMaster {
         
         /// <summary>
+        /// lblHI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lblHI;
+        
+        /// <summary>
+        /// lblLoggedInUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLoggedInUser;
+        
+        /// <summary>
+        /// lnkSignOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkSignOut;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

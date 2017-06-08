@@ -69,7 +69,12 @@
                             <li><a runat="server" href="Webforms/RequestPickup.aspx">Request Pickup</a></li>
                             <li><a runat="server" href="Webforms/DonationManagement.aspx">Manage Donations</a></li>
                             <li><a runat="server" href="Webforms/ListCharities.aspx">Charity List</a></li>
-                        </ul>                    
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a id="lblHI" runat="server" href="#"><span>Hi</span>
+                            <asp:Label runat="server" ID="lblLoggedInUser"></asp:Label></a></li>
+                        <li><a runat="server" href="#" id="lnkSignOut" onserverclick="lnkSignOut_ServerClick" visible="true">Sign Out</a></li>
+                    </ul>                    
                     </div>
                 </div>
             </nav>

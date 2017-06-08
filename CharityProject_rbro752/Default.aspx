@@ -55,7 +55,7 @@
     <br />
     <br />
     <div class="btn-group btn-group-justified">
-        <a class="btn btn-default btn-home-page-link" href="WebForms/SignIn.aspx">Sign In</a>
+        <a class="btn btn-default btn-home-page-link" id="SignInLink" runat="server" href="WebForms/SignIn.aspx">Sign In</a>
         <a class="btn btn-default btn-home-page-link" href="WebForms/DonorSignUp.aspx">Donor Sign Up</a>
         <a class="btn btn-default btn-home-page-link" href="WebForms/CharitySignUp.aspx">Charity Sign Up</a>
     </div>
