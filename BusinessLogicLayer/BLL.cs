@@ -87,6 +87,14 @@ namespace BusinessLogicLayer
             return objCharity;
         }
 
+        public Charities FindCharity(int charityId)
+        {
+            Charities objCharity = new Charities();
+            DAL objDAL = new DAL();
+            objCharity = objDAL.FindCharity(charityId);
+            return objCharity;
+        }
+
         public DataSet GetCharities()
         {
             DAL objDal = new DAL();

@@ -17,8 +17,8 @@ namespace CharityProject_rbro752.WebForms
 {
     public partial class DonationManagement : System.Web.UI.Page
     {
-        
-
+        static int currentDonation=1;
+        static int currentDonorID = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
             BLL objBLL = new BLL();
@@ -27,20 +27,6 @@ namespace CharityProject_rbro752.WebForms
             {
                 Response.Redirect("SignIn.aspx");
             }
-            else
-            {
-                if(Globals.signedInUser.UserType != "Admin")
-                {
-                    categorySelect.Disabled = true;
-                    pickupDateTxt.Disabled = true;
-                    pickupAddress.Disabled = true;
-                    selectCharity.Disabled = true;
-                    inputDropOffDate.Disabled = true;
-                    noItemsTxt.Disabled = true;
-                    noRecItemsTxt.Disabled = true;
-                    selectStatus.Disabled = true;
-                }
-            }
             if (!IsPostBack)
             {
                 selectCharity.DataSource = objBLL.GetCharities();
@@ -48,11 +34,13 @@ namespace CharityProject_rbro752.WebForms
                 selectCharity.DataValueField = "Id";
                 selectCharity.DataBind();
 
-                donationSelect.DataSource = objBLL.GetDonations();
-                donationSelect.DataTextField = "Id";
-                donationSelect.DataValueField = "Id";
-                donationSelect.DataBind();
-                PopulateFields(objBLL.FindDonation(Convert.ToInt32(donationSelect.Value)));
+
+                dropDownSelect.DataSource = objBLL.GetDonations();
+                dropDownSelect.DataTextField = "Id";
+                dropDownSelect.DataValueField = "Id";
+                dropDownSelect.DataBind();
+                dropDownSelect.SelectedValue = currentDonation.ToString();
+                PopulateFields(objBLL.FindDonation(currentDonation));
             }
 
         }
@@ -64,6 +52,7 @@ namespace CharityProject_rbro752.WebForms
             BLL objBLL = new BLL();
             Donation objDonation = new Donation();
             int output = 0;
+            objDonation.DonorId = currentDonorID;
             objDonation.Id = Convert.ToInt32(donationId.Value);
             objDonation.Category = categorySelect.Value;
             objDonation.PickupDate = Convert.ToDateTime(pickupDateTxt.Value);
@@ -86,19 +75,23 @@ namespace CharityProject_rbro752.WebForms
             output = objBLL.DonationUpdateBLL(objDonation);
             if (output > 0)
             {
+                Donors objDonor = objBLL.FindDonor(objDonation.DonorId);
+                Charities objCharity = objBLL.FindCharity(objDonation.Recipient);
+                objBLL.send(objDonation, objDonor, objCharity);
+                objBLL.send(objDonation, objCharity, objDonor);                           
                 ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Update Successful'); window.location.href = 'DonationManagement.aspx';", true);
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Update Failed'); window.location.href = 'DonationManagement.aspx';", true);
             }
-            PopulateFields(objBLL.FindDonation(Convert.ToInt32(donationSelect.Value)));            
+            PopulateFields(objBLL.FindDonation(currentDonation));            
         }
 
         protected void findDonation_Click(object sender, EventArgs e)
         {
             BLL objBLL = new BLL();
-            PopulateFields(objBLL.FindDonation(Convert.ToInt32(donationSelect.Value)));
+            PopulateFields(objBLL.FindDonation(Convert.ToInt32(dropDownSelect.SelectedItem.Value)));
         }
 
         void PopulateFields(Donation objDonation)
@@ -110,6 +103,8 @@ namespace CharityProject_rbro752.WebForms
             selectStatus.Disabled = false;
             Donors objDonor = objBLL.FindDonor(objDonation.DonorId); 
             donationId.Value = objDonation.Id.ToString();
+            currentDonation = objDonation.Id;
+            currentDonorID = objDonation.DonorId;
             donorId.Value = objDonor.FirstName+" "+objDonor.LastName;
             categorySelect.Value = objDonation.Category;
             pickupAddress.Value = objDonation.PickupAddress;
@@ -123,6 +118,7 @@ namespace CharityProject_rbro752.WebForms
             else
             {
                 inputDropOffDate.Value = null;
+                
             }            
             noItemsTxt.Value = objDonation.NoItems.ToString();
             noRecItemsTxt.Value = objDonation.NoRecycledItems.ToString();
@@ -138,8 +134,15 @@ namespace CharityProject_rbro752.WebForms
                 noItemsTxt.Disabled = true;
                 noRecItemsTxt.Disabled = true;
                 selectStatus.Disabled = true;
+                btnUpdateDonation.Visible = false;
             }
+        }
 
+        protected void dropDownSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BLL objBLL = new BLL();
+            PopulateFields(objBLL.FindDonation(Convert.ToInt32(dropDownSelect.SelectedItem.Value)));
+            
         }
     }
 }

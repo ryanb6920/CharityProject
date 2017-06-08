@@ -15,17 +15,10 @@
         
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-4">
-                <label for="donationSelect">Donation:</label>
-                <select class="form-control" id="donationSelect" runat="server">
-                </select>
-                <br />
-                <br />
-            </div>
-            <div class="col-sm-4">
-                <br />
-                <asp:Button ID="findDonation" Text="Select" CssClass="btn btn-default" runat="server" OnClick="findDonation_Click" />
-            </div>
+            <div class="col-sm-8">
+                <label for="donationSelect">Donation:</label>                
+                <asp:DropDownList class="form-control" ID="dropDownSelect" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropDownSelect_SelectedIndexChanged"></asp:DropDownList>
+            </div>            
             <div class="col-sm-2"></div>
         </div>
 
@@ -39,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="donorId">Donor Id:</label>
+                    <label for="donorId">Donor:</label>
                     <input class="form-control" id="donorId" placeholder="Id Here" disabled="" type="text" runat="server">
                 </div>
 
@@ -87,7 +80,7 @@
 
                 <div class="form-group">
                     <label for="inputDropOffDate">Drop Off Date</label>
-                    <input type="date" id="inputDropOffDate" class="form-control" runat="server" />
+                    <input type="date" id="inputDropOffDate" class="form-control" runat="server" onfocus="(this.type='date')" />
                 </div>
 
                 <div class="form-group">

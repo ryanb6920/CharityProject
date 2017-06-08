@@ -16,7 +16,7 @@ namespace CharityProject_rbro752.WebForms
         {
             if(Globals.signedInUser == null || Globals.signedInUser.UserType != "Donor")
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('You must be signed in as a Donor to access this page'); window.location.href = 'SignIn.aspx';", true);
+                //ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('You must be signed in as a Donor to access this page'); window.location.href = 'SignIn.aspx';", true);
                 Response.Redirect("SignIn.aspx");
             }
             if (!IsPostBack)
@@ -40,11 +40,13 @@ namespace CharityProject_rbro752.WebForms
             objDonation.PickupDate = Convert.ToDateTime(inputPickupDate.Value);
             objDonation.Recipient = Convert.ToInt32(selectCharity.Value);
             objDonation.Status = "Awaiting Pickup";
-
             output = objBLL.RequestPickupBLL(objDonation);
-
             if (output > 0)
             {
+                Donors objDonor = objBLL.FindDonor(objDonation.DonorId);
+                Charities objCharity = objBLL.FindCharity(objDonation.Recipient);
+                objBLL.send(objDonation, objDonor, objCharity);
+                objBLL.send(objDonation, objCharity, objDonor);
                 ClientScript.RegisterStartupScript(this.GetType(), "alertwindow", "alert('Pickup Request Submitted'); window.location.href = 'RequestPickup.aspx';", true);
             }
             else

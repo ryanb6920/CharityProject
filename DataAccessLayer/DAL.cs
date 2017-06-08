@@ -64,7 +64,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"UPDATE [Donation]
                                 SET Category='{0}', PickupAddress='{1}', PickupDate='{2}', Recipient='{3}',
-                                DropOffDate = '{4}', NoItems = '{5}', NoRecycledItems = '{6}', Status = '{7}'
+                                DropOffDate = CONVERT(DATETIME,'{4}',103), NoItems = '{5}', NoRecycledItems = '{6}', Status = '{7}'
                                 WHERE Id = '{8}'",
                                 objDonation.Category, objDonation.PickupAddress, objDonation.PickupDate, objDonation.Recipient,
                                 objDonation.DropOffDate, objDonation.NoItems, objDonation.NoRecycledItems, objDonation.Status, objDonation.Id);
@@ -386,6 +386,46 @@ namespace DataAccessLayer
             return objCharity;
         }
 
+        public Charities FindCharity(int charityId)
+        {
+            Charities objCharity = null;
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string sql = string.Format(@"SELECT TOP 1 * FROM [Charities]
+                                            WHERE Id = '{0}'",
+                                            charityId);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    objCharity = new Charities();
+                    if (dr.Read())
+                    {
+                        objCharity.Id = Convert.ToInt32(GetColumnValue(dr, "Id"));
+                        objCharity.CharityName = GetColumnValue(dr, "CharityName");
+                        objCharity.Email = GetColumnValue(dr, "Email");
+                        objCharity.URL = GetColumnValue(dr, "URL");
+                        objCharity.PhoneNo = GetColumnValue(dr, "PhoneNo");
+                        objCharity.OpenHours = GetColumnValue(dr, "OpenHours");
+                        objCharity.Address = GetColumnValue(dr, "Address");
+                        objCharity.Password = GetColumnValue(dr, "Password");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return objCharity;
+        }
+
         public List<Data> GetIndividualChartData(DataTable dt)
         {
             List<Data> dataList = new List<Data>();
@@ -403,7 +443,6 @@ namespace DataAccessLayer
                 }
                 else
                     ColumnName = dr[0].ToString();
-
 
                 val = Convert.ToInt32(dr[1]);
                 dataList.Add(new Data(ColumnName, val));
@@ -474,12 +513,12 @@ namespace DataAccessLayer
 
         }
 
-        public void send(Donors objDonor)
+        public void send(Donors objDonor) //Method for Donor Sign Up Email
         {
             /*
              * Domain: sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org
              * Key: key-f1eea887912d47d16655bca93ef5eb76
-             * Email: r.s.b@hotmail.co.nz
+             * Email: uselessisuseful123@gmail.com
              *  
              */
 
@@ -493,7 +532,7 @@ namespace DataAccessLayer
                 req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
                 req.Resource = "{domain}/messages";
                 req.AddParameter("from", "Admin @ Useless is Useful <postmaster@sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org>");//default smtp login from your sandbox  domain details.
-                req.AddParameter("to", "Test <r.s.b@hotmail.co.nz>");//authorized email only.
+                req.AddParameter("to", "Test <uselessisuseful123@gmail.com>");//authorized email only.
                 req.AddParameter("subject", "Welcome!");// Subject of your email
                 req.AddParameter("html", string.Format(@"
                                         <html>
@@ -520,12 +559,12 @@ namespace DataAccessLayer
 
         }
 
-        public void send(Charities objCharity)
+        public void send(Charities objCharity) //Method for Charity Sign Up Email
         {
             /*
              * Domain: sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org
              * Key: key-f1eea887912d47d16655bca93ef5eb76
-             * Email: r.s.b@hotmail.co.nz
+             * Email: uselessisuseful123@gmail.com
              *  
              */
 
@@ -539,7 +578,7 @@ namespace DataAccessLayer
                 req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
                 req.Resource = "{domain}/messages";
                 req.AddParameter("from", "Admin @ Useless is Useful <postmaster@sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org>");//default smtp login from your sandbox  domain details.
-                req.AddParameter("to", "Test <r.s.b@hotmail.co.nz>");//authorized email only.
+                req.AddParameter("to", "Test <uselessisuseful123@gmail.com>");//authorized email only.
                 req.AddParameter("subject", "Welcome!");// Subject of your email
                 req.AddParameter("html", string.Format(@"
                                         <html>
@@ -566,12 +605,12 @@ namespace DataAccessLayer
 
         }
 
-        public void send(Donation objDonation, Donors objDonor, Charities objCharity)
+        public void send(Donation objDonation, Donors objDonor, Charities objCharity) //Method for Donor Update Email
         {
             /*
              * Domain: sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org
              * Key: key-f1eea887912d47d16655bca93ef5eb76
-             * Email: r.s.b@hotmail.co.nz
+             * Email: uselessisuseful123@gmail.com
              *  
              */
 
@@ -585,21 +624,31 @@ namespace DataAccessLayer
                 req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
                 req.Resource = "{domain}/messages";
                 req.AddParameter("from", "Admin @ Useless is Useful <postmaster@sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org>");//default smtp login from your sandbox  domain details.
-                req.AddParameter("to", "Test <r.s.b@hotmail.co.nz>");//authorized email only.
-                req.AddParameter("subject", "Welcome!");// Subject of your email
+                req.AddParameter("to", "Test <uselessisuseful123@gmail.com>");//authorized email only.
+                req.AddParameter("subject", string.Format("Update On your case! - Id: {0}",objDonation.Id));// Subject of your email
                 req.AddParameter("html", string.Format(@"
                                         <html>
-	                                        <h3>Welcome {0} to Useless is Useful</h3>	
-	                                        <p>Thank you for signing up as a Charity!</p>
-	                                        <p>Your login details are:
-		                                        Email:		{1}<br/>
-		                                        Password:	{2}</p>
-	                                        <p>We hope to recieve some donations form you soon!</p>	
+	                                        <h3>Hello! {0}</h3>
+	                                        <p>Here is an update on how your case is going </p>
+	                                        <h4>Donation ID: {1}</h4>	
+	                                        <p>Your Case details are:<br/><br/>
+		                                        Charity Name:	{2}<br/>
+		                                        Donation Category: {3}<br/>
+		                                        Pickup Date: {4}<br/>
+		                                        Pickup Address: {5}<br/>		                                        
+		                                        Number of items donated: {6}<br/>
+		                                        Number of recycled items: {7}<br/>
+		                                        Drop off date: {8}<br/>
+                                                Donation Status: {9}<br/>
+	                                        </p>
+	                                        <p>We will be in touch with further updates!</p>	
 	                                        <p>Many Thanks,<br/>
 		                                        Admin @ Useless is Useful.
 	                                        </p>	
-                                        </html>                                
-                                ", objDonor.FirstName, objDonor.Email, objDonor.Password));// Body of your email.
+                                        </html>                              
+                                ",  objDonor.FirstName, objDonation.Id, objCharity.CharityName,
+                                    objDonation.Category, objDonation.PickupDate.ToShortDateString(), objDonation.PickupAddress,
+                                    objDonation.NoItems, objDonation.NoRecycledItems, objDonation.DropOffDate.ToString(), objDonation.Status));// Body of your email.
                 req.Method = Method.POST;
                 client.Execute(req);
 
@@ -612,7 +661,7 @@ namespace DataAccessLayer
 
         }
 
-        public void send(Donation objDonation, Charities objCharity, Donors objDonor)
+        public void send(Donation objDonation, Charities objCharity, Donors objDonor) //Method for Charity Update Email
         {
             /*
              * Domain: sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org
@@ -627,12 +676,17 @@ namespace DataAccessLayer
                 client.BaseUrl = new Uri("https://api.mailgun.net/v3");
                 client.Authenticator = new HttpBasicAuthenticator("api", "key-f1eea887912d47d16655bca93ef5eb76");// replace this key with your key.
 
+                if(objDonation.DropOffDate != null)
+                {
+                    
+                }
+
                 RestRequest req = new RestRequest();
                 req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
                 req.Resource = "{domain}/messages";
                 req.AddParameter("from", "Admin @ Useless is Useful <postmaster@sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org>");//default smtp login from your sandbox  domain details.
-                req.AddParameter("to", "Test <r.s.b@hotmail.co.nz>");//authorized email only.
-                req.AddParameter("subject", "Donation Update");// Subject of your email
+                req.AddParameter("to", "Test <uselessisuseful123@gmail.com>");//authorized email only.
+                req.AddParameter("subject", string.Format("Update On your case! - Id: {0}", objDonation.Id));// Subject of your email
                 req.AddParameter("html", string.Format(@"
                                         <html>
 	                                        <h3>Hello! {0}</h3>
@@ -645,16 +699,17 @@ namespace DataAccessLayer
 		                                        Pickup Address: {5}<br/>		                                        
 		                                        Number of items donated: {6}<br/>
 		                                        Number of recycled items: {7}<br/>
-		                                        Drop off date: {8}
+		                                        Drop off date: {8}<br/>
+                                                Donation Status: {9}<br/>
 	                                        </p>
 	                                        <p>We will be in touch with further updates!</p>	
 	                                        <p>Many Thanks,<br/>
 		                                        Admin @ Useless is Useful.
 	                                        </p>	
                                         </html>                               
-                                ", objCharity.CharityName, objDonation.Id, objDonor.FirstName + " " + objDonor.LastName,
+                                ",  objCharity.CharityName, objDonation.Id, objDonor.FirstName + " " + objDonor.LastName,
                                     objDonation.Category, objDonation.PickupDate.ToShortDateString(), objDonation.PickupAddress,
-                                    objDonation.NoItems, objDonation.NoRecycledItems, objDonation.DropOffDate.ToString()));// Body of your email.
+                                    objDonation.NoItems, objDonation.NoRecycledItems, objDonation.DropOffDate.ToString(),objDonation.Status));// Body of your email.
                 req.Method = Method.POST;
                 client.Execute(req);
 

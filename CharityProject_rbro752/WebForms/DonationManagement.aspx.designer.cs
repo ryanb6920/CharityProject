@@ -13,22 +13,13 @@ namespace CharityProject_rbro752.WebForms {
     public partial class DonationManagement {
         
         /// <summary>
-        /// donationSelect control.
+        /// dropDownSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect donationSelect;
-        
-        /// <summary>
-        /// findDonation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button findDonation;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownSelect;
         
         /// <summary>
         /// donationId control.

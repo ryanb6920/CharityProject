@@ -27,43 +27,37 @@
             <!-- Left Form -->
             <div class="col-sm-5">
                 <form id="SignIn" runat="server">
-                    <h2>Sign Up - Donor</h2>
+                    <h2>Sign Up - Charity</h2>
                     <!-- Charity Name Input -->
                     <div class="form-group">
                         <label for="charityNameTxt">Charity Name:</label>
                         <input type="text" id="charityNameTxt" placeholder="Charity Name" class="form-control" required="required" runat="server"/>
                     </div>
-
                     <!-- Email Input -->
                     <div class="form-group">
                         <label for="emailSignUp">Email:</label>
                         <input type="email" id="emailSignUp" placeholder="Enter Charity Email" class="form-control" required="required" runat="server"/>                   
                     </div>
-
                     <!-- Website URL Input-->
                     <div class="form-group">
                         <label for="websiteURL">Website URL (Optional):</label>
                         <input type="text" id="websiteURL" placeholder="Enter Website URL" class="form-control" runat="server"/>                   
-                    </div>
-                   
+                    </div>                   
                     <!-- Contact Number Input -->
                     <div class="form-group">
                         <label for="charityContactNumber">Contact Number:</label>
                         <input type="text" id="charityContactNumber" placeholder="Contact Number" class="form-control" required="required" runat="server"/>
                     </div>
-
                     <!-- Opening Hours Input-->
                     <div class="form-group">
                         <label for="openHours">Opening Hours:</label>
                         <input type="text" id="openHours" placeholder="Opening Hours" class="form-control" required="required" runat="server"/>
                     </div>
-
                     <!-- Address Input-->
                     <div class="form-group">
                         <label for="address">Address:</label>
                         <input type="text" id="address" placeholder="Address" class="form-control" required="required" runat="server"/>
                     </div>
-
                     <!-- Password Input -->
                     <div class="form-group">
                         <label for="passwordSignUp">Password:</label>
@@ -72,10 +66,8 @@
                     <div class="form-group">
                         <label for="passwordConfirmSignUp">Confirm Password:</label>
                         <input type="password" id="passwordConfirmSignUp" placeholder="Confirm Password" class="form-control" required="required" runat="server"/>
-                    </div>
-                    
+                    </div>                    
                     <asp:Button ID="btnSignUp" Text="Submit" CssClass="btn btn-success" runat="server" OnClick="btnSignUp_Click" />
-                    
                 </form>
             </div>
 
