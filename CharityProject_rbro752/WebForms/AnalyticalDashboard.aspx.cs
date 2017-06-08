@@ -14,11 +14,18 @@ namespace CharityProject_rbro752.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Globals.signedInUser != null)
+            {
+                if (Globals.signedInUser.UserType != "Admin")
+                    Response.Redirect("SignIn.aspx");
+            }
+            else
+                Response.Redirect("SignIn.aspx");
 
         }
 
         [WebMethod] // This attribute is must to declare a web method.
-        public static List<ChartData> GetDashboardData()// A web method is always a static method.
+        public static List<ChartData> GetDashboardData()//A web method is always a static method.
         {
             List<ChartData> objChartData = new List<ChartData>();
             BLL objBLL = new BLL();

@@ -37,18 +37,18 @@ function drawVisualization(dataValues) {
                 data.addRow([dataValues[i].lstData[j].ColumnName, dataValues[i].lstData[j].Value]);
             }
             var drawComboChart = new google.visualization.ColumnChart(document.getElementById('dvColumnChart1'));
-            drawComboChart.draw(data, { title: "Donation Types" });
+            drawComboChart.draw(data, { title: "Donation Categories" });
         }
         if (dataValues[i].ChartType == "ColumnChart2") {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Donations/Recepients');
+            data.addColumn('string', 'Donations/Completed Donations');
             data.addColumn('number', 'Value');
             for (var j = 0; j < dataValues[i].lstData.length; j++) {
                 data.addRow([dataValues[i].lstData[j].ColumnName, dataValues[i].lstData[j].Value]);
             }
             var drawComboChart = new google.visualization.ColumnChart(document.getElementById('dvColumnChart2'));
-            drawComboChart.draw(data, { title: "Number of Donations and Recepients" });
+            drawComboChart.draw(data, { title: "Number of Donations vs Completed Donations" });
         }
         if (dataValues[i].ChartType == "ColumnChart3") {
 

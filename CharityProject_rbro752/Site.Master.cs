@@ -34,8 +34,10 @@ namespace CharityProject_rbro752
 
         protected void lnkSignOut_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("WebForms/SignIn.aspx");
-            
+            lblHI.InnerText = Page.AppRelativeVirtualPath;
+            if (Page.AppRelativeVirtualPath == "~/Webforms/DonationManagement.aspx") { }
+                Response.Redirect("SignIn.aspx");
+            Response.Redirect("WebForms/SignIn.aspx");    
         }
     }
 }

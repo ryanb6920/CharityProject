@@ -15,7 +15,9 @@
 
             <!-- Logo Goes Here -->            
             <div class="logo col-sm-2">
-                <img src="../images/logo.jpg" width="150px" />
+                <a href="../Default.aspx">
+                    <img src="../images/logo.jpg" width="150px" />
+                </a>
             </div>
 
             <!-- Title/Slogan -->

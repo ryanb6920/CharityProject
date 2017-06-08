@@ -7,8 +7,7 @@ using BusinessObjects;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System;
-using RestSharp;//Adding reference of RestSharp will be explained in next section.
+using RestSharp;
 using RestSharp.Authenticators;
 
 
@@ -136,6 +135,7 @@ namespace DataAccessLayer
 
         public int RequestPickupDAL(Donation objDonation)
         {
+            objDonation.PickupAddress = handleApostrophies(objDonation.PickupAddress);
             int output = 0;
             SqlConnection connection = new SqlConnection(ConnectionString);
             string sql = string.Format(@"INSERT INTO [Donation] (DonorId, Category, PickupAddress, PickupDate, Recipient, Status)
@@ -293,7 +293,6 @@ namespace DataAccessLayer
                         objDonors.Email = GetColumnValue(dr, "Email");
                         objDonors.Password = GetColumnValue(dr, "Password");
                     }
-
                 }
             }
             catch (Exception ex)
@@ -304,7 +303,6 @@ namespace DataAccessLayer
             {
                 connection.Close();
             }
-
             return objDonors;
         }
 
@@ -483,7 +481,7 @@ namespace DataAccessLayer
 
                 string cmd3 = @"select'Number of Donations', count(Id) from Donation
                                 union all
-                               select 'Number of Recipients', count(Id) from Charities";
+                               select 'Number of Dropped Off Donations', count(Id) from Donation where Status='Completed'";
                 using (SqlCommand cmd = new SqlCommand(cmd3, cn))
                 {
                     ds = new DataSet();
@@ -507,7 +505,6 @@ namespace DataAccessLayer
                     lstChartData.Add(new ChartData() { ChartType = "ColumnChart3", lstData = dataList });
                 }
             }
-
 
             return lstChartData;
 
@@ -675,12 +672,7 @@ namespace DataAccessLayer
                 RestClient client = new RestClient();
                 client.BaseUrl = new Uri("https://api.mailgun.net/v3");
                 client.Authenticator = new HttpBasicAuthenticator("api", "key-f1eea887912d47d16655bca93ef5eb76");// replace this key with your key.
-
-                if(objDonation.DropOffDate != null)
-                {
-                    
-                }
-
+                
                 RestRequest req = new RestRequest();
                 req.AddParameter("domain", "sandbox159fa439dcf34a9eb2ff92d54042540e.mailgun.org", ParameterType.UrlSegment);//replace it with your sandbox id.                        
                 req.Resource = "{domain}/messages";
@@ -720,6 +712,19 @@ namespace DataAccessLayer
                 throw ex;
             }
 
+        }
+
+        public string handleApostrophies(string s)
+        {
+            char apostrophe = '\'';
+            foreach (char c in s)
+            {
+                if (c == apostrophe)
+                {
+                   s = s.Insert(s.IndexOf(c), "'");
+                }
+            }
+            return s;
         }
 
     }

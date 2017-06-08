@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-2">
-                <img src="../images/logo.jpg" width="150px" />
+                
             </div>
             <div class="col-sm-10">
                 <h1>Manage Donations</h1>

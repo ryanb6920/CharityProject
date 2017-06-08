@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <h1>&nbsp;</h1>
+        <h1>Analytical Dashboard</h1>
         <div class="row">
             <div class="col-md-6">
                 <div id="dvPieChart" style="width: 600px; height: 350px;">

@@ -4,7 +4,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
                 <h1>Request Pickup</h1>
             </div>
         </div>
