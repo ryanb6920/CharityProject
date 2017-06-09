@@ -2,7 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <h1>Analytical Dashboard</h1>
+        <div class="row">            
+            <div class="col-sm-12">
+                <h1>Analytical Dashboard</h1>
+            </div>
+            
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <div id="dvPieChart" style="width: 600px; height: 350px;">
@@ -27,7 +33,7 @@
 
     <%--#region Javascript files--%>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
-    <script src="../Scripts/AnalyticalDashboard.js"></script>
+    <script src="../Scripts/DashboardAnalytics.js"></script>
     <script type="text/javascript">
         google.load('visualization', '1', { packages: ['corechart'] });
     </script>

@@ -138,6 +138,8 @@
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo_temp.jpg" />
     <Content Include="Scripts\AnalyticalDashboard.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\DashboardAnalytics.js" />
     <Content Include="WebForms\AnalyticalDashboard.aspx" />
     <Content Include="WebForms\CharitySignUp.aspx" />
     <Content Include="WebForms\DonationManagement.aspx" />

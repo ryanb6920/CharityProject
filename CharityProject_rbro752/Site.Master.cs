@@ -27,8 +27,7 @@ namespace CharityProject_rbro752
                 else if (WebForms.Globals.signedInUser.UserType == "Charity")
                     lblLoggedInUser.Text = WebForms.Globals.signedInCharity.CharityName + " ";
                 else if (WebForms.Globals.signedInUser.UserType == "Admin")
-                    lblLoggedInUser.Text = "Admin ";
-                
+                    lblLoggedInUser.Text = "Admin ";                
             }
         }
 

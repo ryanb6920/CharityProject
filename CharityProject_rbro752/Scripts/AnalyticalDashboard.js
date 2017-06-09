@@ -29,7 +29,6 @@ function drawVisualization(dataValues) {
             drawPieChart.draw(data, { title: "Donation Status" });
         }
         if (dataValues[i].ChartType == "ColumnChart1") {
-
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Donation Type');
             data.addColumn('number', 'Donation Value');
@@ -40,7 +39,6 @@ function drawVisualization(dataValues) {
             drawComboChart.draw(data, { title: "Donation Categories" });
         }
         if (dataValues[i].ChartType == "ColumnChart2") {
-
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Donations/Completed Donations');
             data.addColumn('number', 'Value');
@@ -48,10 +46,10 @@ function drawVisualization(dataValues) {
                 data.addRow([dataValues[i].lstData[j].ColumnName, dataValues[i].lstData[j].Value]);
             }
             var drawComboChart = new google.visualization.ColumnChart(document.getElementById('dvColumnChart2'));
+            drawComboChart.title = "";
             drawComboChart.draw(data, { title: "Number of Donations vs Completed Donations" });
         }
         if (dataValues[i].ChartType == "ColumnChart3") {
-
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Dates');
             data.addColumn('number', 'Value');

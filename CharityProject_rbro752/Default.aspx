@@ -15,23 +15,23 @@
             <div class="item active">
                 <img src="../images/carousel-pic-hunger.jpg" alt="hunger">
                 <div class="carousel-caption">
-                    <h3>Hunger</h3>
-                    <p>Is bad and stuff</p>
+                    <h2>Hunger</h2>
+                    
                 </div>
             </div>
 
             <div class="item">
                 <img src="../images/carousel-pic-poverty.jpg" alt="poverty">
                 <div class="carousel-caption">
-                    <h3>Poverty</h3>
-                    <p>Send help to people</p>
+                    <h2>Poverty</h2>
+                    
                 </div>
             </div>
 
             <div class="item">
                 <img src="../images/carousel-pic-unitednations.jpg" alt="United Nations">
                 <div class="carousel-caption">
-                    <h3>United Nations</h3>
+                    <h2>United Nations</h2>
                     <p>Plan to stop this by 2030</p>
                 </div>
             </div>

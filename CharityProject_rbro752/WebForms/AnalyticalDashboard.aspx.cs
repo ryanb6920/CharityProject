@@ -14,6 +14,7 @@ namespace CharityProject_rbro752.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (Globals.signedInUser != null)
             {
                 if (Globals.signedInUser.UserType != "Admin")
@@ -21,7 +22,7 @@ namespace CharityProject_rbro752.WebForms
             }
             else
                 Response.Redirect("SignIn.aspx");
-
+            GetDashboardData();
         }
 
         [WebMethod] // This attribute is must to declare a web method.
