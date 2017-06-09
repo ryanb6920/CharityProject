@@ -2,10 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>Our Supported Charities</h1>
-        <h2>Placeholder Charity list page</h2>
-    </div>
+
+    <h1>Our Supported Charities</h1>
+
 
     <asp:DataList ID="CharityDataList" runat="server" RepeatDirection="Horizontal" DataSourceID="CharityProjectDB" BorderColor="Black" CellPadding="5" GridLines="Both" HorizontalAlign="Center" OnSelectedIndexChanged="CharityDataList_SelectedIndexChanged" RepeatColumns="4" ShowFooter="False" ShowHeader="False">
         <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Left" VerticalAlign="Middle" />
@@ -19,19 +18,21 @@
             <asp:Label ID="lblOpenHours" runat="server" Text='<%# Eval("OpenHours") %>'></asp:Label>
             <br />
             <br />
-            Contact Information:<br />Phone:
+            Contact Information:<br />
+            Phone:
             <asp:Label ID="lblPhone" runat="server" Text='<%# Eval("PhoneNo") %>'></asp:Label>
             <br />
             Email:
             <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
             <br />
             <br />
-            Website:<br />URL:
+            Website:<br />
+            URL:
             <asp:HyperLink ID="lnkWebsite" runat="server" NavigateUrl='<%# Eval("URL") %>' Text='<%# Eval("URL") %>'></asp:HyperLink>
-            
+
             <br />
             <br />
-            
+
         </ItemTemplate>
 
         <SeparatorStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Justify" VerticalAlign="Middle" />
