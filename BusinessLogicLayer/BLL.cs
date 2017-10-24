@@ -13,7 +13,7 @@ namespace BusinessLogicLayer
     {
         public BLL()
         {
-
+            //
         }
 
         public int DonorSignUpBLL(Donors objDonor)
