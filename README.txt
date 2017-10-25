@@ -8,3 +8,4 @@ Donor login needed to submit donation
 	user: test123@gmail.com
 	pass: test
 
+App will still have some bugs as it is not completely finished.
